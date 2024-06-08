@@ -8,3 +8,10 @@ def db_setup():
     cursor = connection.cursor()
     cursor.execute("CREATE TABLE IF NOT EXISTS acount (email TEXT NOT NULL, username TEXT, password TEXT NOT NULL, application TEXT NOT NULL)")
     connection.commit()
+
+# def add_user():
+
+# def find_user():
+
+# def del_user():
+
