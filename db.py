@@ -26,7 +26,11 @@ def find_user(email):
     else:
         print("No users found with email:", email)
 
-# def change_password():
+def change_password(email, username, new_password):
+    connection = db.connect("usr.db")
+    cursor = connection.cursor()
+    cursor.execute("UPDATE usr_details SET password = ? WHERE email = ? AND username = ?", (new_password, email, username))
+    connection.commit()
 
 # def del_user():
 
