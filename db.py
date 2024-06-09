@@ -15,7 +15,18 @@ def add_user(username, email, password, application):
     cursor.execute("INSERT INTO usr_details (username, email, password, application) VALUES (?,?,?,?)", (username, email, password, application))
     connection.commit()
 
-# def find_user():
+def find_user(email):
+    connection = db.connect("usr.db")
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM usr_details WHERE email = ?", (email))
+    result = cursor.fetchall()
+    if result:
+        for row in result:
+            print(row)
+    else:
+        print("No users found with email:", email)
+
+# def change_password():
 
 # def del_user():
 
