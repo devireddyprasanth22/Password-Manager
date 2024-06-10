@@ -32,5 +32,8 @@ def change_password(email, username, new_password):
     cursor.execute("UPDATE usr_details SET password = ? WHERE email = ? AND username = ?", (new_password, email, username))
     connection.commit()
 
-# def del_user():
-
+def del_user(email, username, password):
+    connection = db.connect("usr.db")
+    cursor = connection.cursor()
+    cursor.execute("DELETE FROM eusr_details WHERE email = ?, username = ?, password = ?", (email, username, password))
+    connection.commit()

@@ -1,0 +1,1 @@
+# create a master password encryption key and handle encryption and decryption of data here

@@ -1,0 +1,3 @@
+# def encrypt():
+
+# def decrypt():
