@@ -1,6 +1,6 @@
 # the interface that the user will see when this program is run
 import maskpass 
-from db import add_user, find_user, change_password, del_user
+from db import add_user, find_user, change_password, del_user, verify
 from password_gen import password_generator
 
 yes = {'yes','y', 'ye', ''}
@@ -35,5 +35,16 @@ def find_account():
     print('Please enter the email address: ')
     email = input()
     find_user(email)
-# def change_password() -> change_password(email, username, new password)
+def change_password(): #-> change_password(email, username, old_password, new password)
+    print('Please enter the email address: ')
+    email = input()
+    print('Please enter the username: ')
+    username = input()
+    print('Enter your old password for verification: ')
+    old_pswd = input()
+    verify(email, username, old_pswd)
+    print('Enter your new password')
+    new_pswd = input()
+    change_password(email, username, new_pswd)
+    print('Password changed successfully!')
 # def del_account -> del_user(email, username, password)

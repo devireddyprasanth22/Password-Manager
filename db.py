@@ -37,3 +37,13 @@ def del_user(email, username, password):
     cursor = connection.cursor()
     cursor.execute("DELETE FROM eusr_details WHERE email = ?, username = ?, password = ?", (email, username, password))
     connection.commit()
+
+def verify(email, username, password):
+    connection = db.connect("usr.db")
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM usr_details WHERE email = ? AND username = ? AND password = ?", (email, username, password))
+    result = cursor.fetchall()
+    if result:
+        print('Verified!')
+    else:
+        print("Incorrect credentials")
