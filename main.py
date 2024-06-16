@@ -1,4 +1,5 @@
 # create a master password encryption key and handle encryption and decryption of data here
-import maskpass  # importing maskpass library
+from interface_menu import *
 
-pwd = maskpass.askpass(prompt="Password:", mask="#")
+def main():
+    pswd =  maskpass.askpass(prompt="Please enter your password for masteradmin:", mask="#")
