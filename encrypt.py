@@ -10,7 +10,6 @@ def load_key():
 
 generate_key()
 
-
 def encrypt(str):
     key = load_key()
     f_key = Fernet(key)
