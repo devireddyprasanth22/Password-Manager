@@ -11,14 +11,20 @@ def main():
         exit()
     menu = options()
     while True:
-        match menu:
-            case 1:
-                add_account()
-            case 2:
-                find_account()
-            case 3:
-                change_password()
-            case 4:
-                del_account()
-            case "Q":
-                exit()
+        if menu == '1':
+            add_account()
+        elif menu == '2':
+            find_account()
+        elif menu == '3':
+            change_password()
+        elif menu == '4':
+            del_account()
+        elif menu.upper() == 'Q':
+            print("Exiting program...")
+            break
+        else:
+            print("Invalid choice. Please select a valid option.")
+
+
+if __name__ == "__main__":
+    main()

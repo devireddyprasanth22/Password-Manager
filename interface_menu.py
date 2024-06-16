@@ -12,7 +12,13 @@ def options():
     print('3. Change password for account')
     print('4. Delete account credentials')
     print('Q. Exit')
-    return input(': ')
+    while True:
+        choice = input(': ').upper()
+        
+        if choice in ['1', '2', '3', '4', 'Q']:
+            return choice
+        else:
+            print("Invalid choice. Please enter a valid option (1-4 or Q).")
 
 def add_account(): #-> add_user from db
     print('Name of application: ')
@@ -25,7 +31,7 @@ def add_account(): #-> add_user from db
     choice = input()
     if choice in yes:
         password = maskpass.askpass(prompt="Please enter your password:", mask="#")
-    elif choice in no:
+    else:
         password = password_generator()
         print(f'Your secure password for this application is {password}')
     add_user(username, email, password, application)
