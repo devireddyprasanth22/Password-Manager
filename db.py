@@ -14,6 +14,7 @@ def db_setup():
 
 def add_user(username, email, password, application):
     try:
+        db_setup()
         connection = db.connect("usr.db")
         cursor = connection.cursor()
         cursor.execute("INSERT INTO usr_details (username, email, password, application) VALUES (?,?,?,?)", (username, email, password, application))

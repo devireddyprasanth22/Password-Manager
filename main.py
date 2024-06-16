@@ -9,8 +9,9 @@ def main():
     else:
         print("Incorrect")
         exit()
-    menu = options()
     while True:
+        menu = options()
+        
         if menu == '1':
             add_account()
         elif menu == '2':
@@ -24,6 +25,8 @@ def main():
             break
         else:
             print("Invalid choice. Please select a valid option.")
+    
+    exit()
 
 
 if __name__ == "__main__":
