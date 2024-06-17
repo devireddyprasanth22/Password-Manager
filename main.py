@@ -20,6 +20,8 @@ def main():
             change_password()
         elif menu == '4':
             del_account()
+        elif menu == '5':
+            all_users()
         elif menu.upper() == 'Q':
             print("Exiting program...")
             break

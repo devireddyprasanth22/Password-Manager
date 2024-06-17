@@ -1,8 +1,9 @@
 # the interface that the user will see when this program is run
 import re
 import maskpass 
-from db import add_user, find_user, change_password, del_user, verify
+from db import add_user, find_user, change_password, del_user, verify, all_users
 from password_gen import password_generator
+from reader import get_key
 
 yes = {'yes','y', 'ye', ''}
 no = {'no','n'}
@@ -12,6 +13,7 @@ def options():
     print('2. Find account associated to email')
     print('3. Change password for account')
     print('4. Delete account credentials')
+    print('5. List all account credentials')
     print('Q. Exit')
     while True:
         choice = input(': ').upper()
@@ -88,6 +90,15 @@ def del_account(): #-> del_user(email, username, password)
     pswd =  maskpass.askpass(prompt="Please enter your password:", mask="#")
     del_user(email, username, pswd, application)
     print('Account deleted successfully')
+
+def all_accounts():
+    print("This is a privileged action")
+    pswd =  maskpass.askpass(prompt="Please enter your masteradmin password:", mask="#")
+    key = get_key()
+    if key == pswd:
+        all_users()
+    else:
+        print("Incorrect Credentials")
 
 def is_valid_email(email):
     # Regular expression for validating an Email
