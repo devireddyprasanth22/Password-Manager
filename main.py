@@ -21,7 +21,7 @@ def main():
         elif menu == '4':
             del_account()
         elif menu == '5':
-            all_users()
+            all_accounts()
         elif menu.upper() == 'Q':
             print("Exiting program...")
             break

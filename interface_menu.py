@@ -18,10 +18,10 @@ def options():
     while True:
         choice = input(': ').upper()
         
-        if choice in ['1', '2', '3', '4', 'Q']:
+        if choice in ['1', '2', '3', '4', '5','Q']:
             return choice
         else:
-            print("Invalid choice. Please enter a valid option (1-4 or Q).")
+            print("Invalid choice. Please enter a valid option (1-5 or Q).")
 
 def add_account(): #-> add_user from db
     print('Name of application: ')
