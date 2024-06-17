@@ -76,3 +76,15 @@ def verify(email, username, password):
         print(f"Error: {e}")
     finally:
         connection.close()
+
+def all_users():
+    connection = db.connect("usr.db")
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM usr_details")
+    # Fetch all rows from the executed query
+    rows = cursor.fetchall()
+    for row in rows:
+        print(row)
+
+    cursor.close()
+    connection.close()
