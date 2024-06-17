@@ -1,4 +1,5 @@
 # the interface that the user will see when this program is run
+import re
 import maskpass 
 from db import add_user, find_user, change_password, del_user, verify
 from password_gen import password_generator
@@ -23,8 +24,14 @@ def options():
 def add_account(): #-> add_user from db
     print('Name of application: ')
     application = input()
-    print('Email for this application: ')
-    email = input()
+    email = ""
+    while True:
+        print('Email for this application: ')
+        email = input()
+        if is_valid_email(email):
+            break
+        else:
+            print("Invalid email format. Please try again.")
     print('Username for this application')
     username = input()
     print('Do you already have a password for this application [Y,n]: ')
@@ -38,13 +45,25 @@ def add_account(): #-> add_user from db
     print('Account created!')
 
 def find_account():
-    print('Please enter the email address: ')
-    email = input()
+    email = ""
+    while True:
+        print('Email for this application: ')
+        email = input()
+        if is_valid_email(email):
+            break
+        else:
+            print("Invalid email format. Please try again.")
     find_user(email)
 
 def change_password(): 
-    print('Please enter the email address: ')
-    email = input()
+    email = ""
+    while True:
+        print('Email for this application: ')
+        email = input()
+        if is_valid_email(email):
+            break
+        else:
+            print("Invalid email format. Please try again.")
     print('Please enter the username: ')
     username = input()
     old_pswd = maskpass.askpass(prompt="Please enter your old password:", mask="#")
@@ -56,10 +75,21 @@ def change_password():
 def del_account(): #-> del_user(email, username, password)
     print('Please enter the application name')
     application = input()
-    print('Please enter the email address: ')
-    email = input()
+    email = ""
+    while True:
+        print('Email for this application: ')
+        email = input()
+        if is_valid_email(email):
+            break
+        else:
+            print("Invalid email format. Please try again.")
     print('Please enter the username: ')
     username = input()
     pswd =  maskpass.askpass(prompt="Please enter your password:", mask="#")
     del_user(email, username, pswd, application)
     print('Account deleted successfully')
+
+def is_valid_email(email):
+    # Regular expression for validating an Email
+    email_regex = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
+    return re.match(email_regex, email) is not None
