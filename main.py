@@ -1,6 +1,7 @@
 # create a master password encryption key and handle encryption and decryption of data here
 from interface_menu import *
 from reader import get_key
+from encrypt import generate_key
 def main():
     pswd =  maskpass.askpass(prompt="Please enter your password for masteradmin:", mask="#")
     key = get_key()
@@ -32,4 +33,5 @@ def main():
 
 
 if __name__ == "__main__":
+    generate_key()
     main()

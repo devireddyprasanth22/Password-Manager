@@ -4,6 +4,7 @@ import maskpass
 from db import add_user, find_user, change_password, del_user, verify, all_users
 from password_gen import password_generator
 from reader import get_key
+from encrypt import encrypt, decrypt, generate_key
 
 yes = {'yes','y', 'ye', ''}
 no = {'no','n'}
@@ -43,7 +44,8 @@ def add_account(): #-> add_user from db
     else:
         password = password_generator()
         print(f'Your secure password for this application is {password}')
-    add_user(username, email, password, application)
+    encrypted = encrypt(password)
+    add_user(username, email, encrypted, application)
     print('Account created!')
 
 def find_account():
