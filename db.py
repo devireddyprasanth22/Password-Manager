@@ -32,7 +32,7 @@ def find_user(email):
         result = cursor.fetchall()
         if result:
             for row in result:
-                print(row)
+                return list(row)
         else:
             print("No users found with email:", email)
     except db.Error as e:

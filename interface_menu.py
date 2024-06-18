@@ -57,8 +57,9 @@ def find_account():
             break
         else:
             print("Invalid email format. Please try again.")
-    find_user(email)
-
+    x = find_user(email)
+    x[2] = decrypt(x[2])
+    print(tuple(x))
 def change_password(): 
     email = ""
     while True:
