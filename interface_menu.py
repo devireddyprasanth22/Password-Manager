@@ -11,7 +11,7 @@ no = {'no','n'}
 def options():
     print(('-'*6) + 'Menu'+ ('-' *6))
     print('1. Add new account credentials')
-    print('2. Find account associated to email')
+    print('2. Find account for an application')
     print('3. Change password for account')
     print('4. Delete account credentials')
     print('5. List all account credentials')
@@ -49,15 +49,15 @@ def add_account(): #-> add_user from db
     print('Account created!')
 
 def find_account():
-    email = ""
+    application = ""
     while True:
-        print('Email for this application: ')
-        email = input()
-        if is_valid_email(email):
+        print('Application name: ')
+        application = input()
+        if application:
             break
         else:
-            print("Invalid email format. Please try again.")
-    x = find_user(email)
+            print("Please enter your application name")
+    x = find_user(application)
     x[2] = decrypt(x[2])
     print(tuple(x))
 def change_password(): 

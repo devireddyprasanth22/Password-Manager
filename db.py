@@ -24,17 +24,17 @@ def add_user(username, email, password, application):
     finally:
         connection.close()
 
-def find_user(email):
+def find_user(application):
     try:
         connection = db.connect("usr.db")
         cursor = connection.cursor()
-        cursor.execute("SELECT * FROM usr_details WHERE email = ?", (email,))
+        cursor.execute("SELECT * FROM usr_details WHERE application = ?", (application,))
         result = cursor.fetchall()
         if result:
             for row in result:
                 return list(row)
         else:
-            print("No users found with email:", email)
+            print("No users found for application:", application)
     except db.Error as e:
         print(f"Error: {e}")
     finally:
